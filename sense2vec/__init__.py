@@ -1,9 +1,11 @@
-from . import util
-from .vectors import VectorMap
+from .sense2vec import Sense2Vec  # noqa: F401
+from .component import Sense2VecComponent  # noqa: F401
+from .util import importlib_metadata, registry  # noqa: F401
 
+try:
+    # This needs to be imported in order for the entry points to be loaded
+    from . import prodigy_recipes  # noqa: F401
+except ImportError:
+    pass
 
-def load(name=None, via=None):
-    package = util.get_package_by_name(name, via=via)
-    vector_map = VectorMap(128)
-    vector_map.load(package.path)
-    return vector_map
+__version__ = importlib_metadata.version(__name__)

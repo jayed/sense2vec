@@ -1,4 +1,2 @@
-recursive-include include *.h
-include buildbot.json
 include LICENSE
-include README.rst
+include README.md
